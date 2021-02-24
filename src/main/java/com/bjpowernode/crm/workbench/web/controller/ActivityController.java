@@ -10,6 +10,7 @@ import com.bjpowernode.crm.utils.ServiceFactory;
 import com.bjpowernode.crm.utils.UUIDUtil;
 import com.bjpowernode.crm.vo.PaginationVO;
 import com.bjpowernode.crm.workbench.domain.Activity;
+import com.bjpowernode.crm.workbench.domain.ActivityRemark;
 import com.bjpowernode.crm.workbench.service.ActivityService;
 import com.bjpowernode.crm.workbench.service.impl.ActivityServiceImpl;
 
@@ -54,6 +55,14 @@ public class ActivityController extends HttpServlet {
         }else if("/workbench/activity/update.do".equals(path)){
 
             update(request,response);
+
+        }else if("/workbench/activity/detail.do".equals(path)){
+
+            detail(request,response);
+
+        }else if("/workbench/activity/getRemarkListByAid.do".equals(path)){
+
+            getRemarkListByAid(request,response);
 
         }
 
@@ -137,7 +146,7 @@ public class ActivityController extends HttpServlet {
 
     }*/
 
-    /*private void getRemarkListByAid(HttpServletRequest request, HttpServletResponse response) {
+    private void getRemarkListByAid(HttpServletRequest request, HttpServletResponse response) {
 
         System.out.println("根据市场活动id，取得备注信息列表");
 
@@ -149,11 +158,9 @@ public class ActivityController extends HttpServlet {
 
         PrintJson.printJsonObj(response, arList);
 
+    }
 
-
-    }*/
-
-    /*private void detail(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+    private void detail(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
         System.out.println("进入到跳转到详细信息页的操作");
 
@@ -168,7 +175,7 @@ public class ActivityController extends HttpServlet {
         request.getRequestDispatcher("/workbench/activity/detail.jsp").forward(request, response);
 
 
-    }*/
+    }
 
     private void update(HttpServletRequest request, HttpServletResponse response) {
 

@@ -71,7 +71,7 @@
 
     </select>-->
 
-    <!--<select id="detail" resultType="Activity">
+    <select id="detail" resultType="Activity">
 
         select
 
@@ -87,15 +87,13 @@
         a.editTime,
         a.editBy
 
-
         from tbl_activity a
         join tbl_user u
         on a.owner=u.id
 
         where a.id=#{id}
 
-
-    </select>-->
+    </select>
 
     <update id="update">
 
