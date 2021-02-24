@@ -16,6 +16,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script type="text/javascript" src="jquery/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="jquery/bootstrap-datetimepicker-master/locale/bootstrap-datetimepicker.zh-CN.js"></script>
 
+	<link rel="stylesheet" type="text/css" href="jquery/bs_pagination/jquery.bs_pagination.min.css">
+	<script type="text/javascript" src="jquery/bs_pagination/jquery.bs_pagination.min.js"></script>
+	<script type="text/javascript" src="jquery/bs_pagination/en.js"></script>
+
 <script type="text/javascript">
 
 	$(function(){
@@ -184,12 +188,37 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				点击查询按钮的时候，我们应该将搜索框中的信息保存起来,保存到隐藏域中
 			 */
 
-			/*$("#hidden-name").val($.trim($("#search-name").val()));
+			$("#hidden-name").val($.trim($("#search-name").val()));
 			$("#hidden-owner").val($.trim($("#search-owner").val()));
 			$("#hidden-startDate").val($.trim($("#search-startDate").val()));
-			$("#hidden-endDate").val($.trim($("#search-endDate").val()));*/
+			$("#hidden-endDate").val($.trim($("#search-endDate").val()));
 
 			pageList(1,2);
+
+		})
+
+		// 为全选复选框绑定事件，触发全选操作
+		$("#qx").click(function () {
+
+			$("input[name=xz]").prop("checked", this.checked);
+
+		})
+
+		// 以下这种做法是不行的
+		/*$("input[name=xz]").click(function () {
+			alert(123);
+		})*/
+
+		// 因为动态生成的元素，是不能够以普通绑定事件的形式来进行操作的
+		/*
+			动态生成的元素，我们要以on方法的形式来触发事件
+
+			语法：
+				$(需要绑定元素的有效的外层元素).on(绑定事件的方式，需要绑定的元素的jquery对象，回调函数)
+		 */
+		$("#activityBody").on("click",$("input[name=xz]"),function () {
+
+			$("#qx").prop("checked", $("input[name=xz]").length==$("input[name=xz]:checked").length);
 
 		})
 
@@ -222,10 +251,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		/*$("#qx").prop("checked",false);*/
 
 		//查询前，将隐藏域中保存的信息取出来，重新赋予到搜索框中
-		/*$("#search-name").val($.trim($("#hidden-name").val()));
+		$("#search-name").val($.trim($("#hidden-name").val()));
 		$("#search-owner").val($.trim($("#hidden-owner").val()));
 		$("#search-startDate").val($.trim($("#hidden-startDate").val()));
-		$("#search-endDate").val($.trim($("#hidden-endDate").val()));*/
+		$("#search-endDate").val($.trim($("#hidden-endDate").val()));
 
 		$.ajax({
 
@@ -262,7 +291,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				$.each(data.dataList,function (i,n) {
 
 					html += '<tr class="active">';
-					html += '<td><input type="checkbox" value="'+n.id+'"/></td>';
+					html += '<td><input type="checkbox" name="xz" value="'+n.id+'"/></td>';
 					html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'workbench/activity/detail.jsp\';">'+n.name+'</a></td>';
 					html += '<td>'+n.owner+'</td>';
 					html += '<td>'+n.startDate+'</td>';
@@ -273,7 +302,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 				$("#activityBody").html(html);
 
-				/*//计算总页数
+				//计算总页数
 				var totalPages = data.total%pageSize==0?data.total/pageSize:parseInt(data.total/pageSize)+1;
 
 				//数据处理完毕后，结合分页查询，对前端展现分页信息
@@ -295,11 +324,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					onChangePage : function(event, data){
 						pageList(data.currentPage , data.rowsPerPage);
 					}
-				});*/
-
-
+				});
 			}
-
 		})
 
 	}
@@ -307,6 +333,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </script>
 </head>
 <body>
+
+	<input type="hidden" id="hidden-name"/>
+	<input type="hidden" id="hidden-owner"/>
+	<input type="hidden" id="hidden-startDate"/>
+	<input type="hidden" id="hidden-endDate"/>
 
 	<!-- 创建市场活动的模态窗口 -->
 	<div class="modal fade" id="createActivityModal" role="dialog">
@@ -517,7 +548,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<table class="table table-hover">
 					<thead>
 						<tr style="color: #B3B3B3;">
-							<td><input type="checkbox" /></td>
+							<td><input type="checkbox" id="qx"/></td>
 							<td>名称</td>
                             <td>所有者</td>
 							<td>开始日期</td>
@@ -544,38 +575,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			</div>
 			
 			<div style="height: 50px; position: relative;top: 30px;">
-				<div>
-					<button type="button" class="btn btn-default" style="cursor: default;">共<b>50</b>条记录</button>
-				</div>
-				<div class="btn-group" style="position: relative;top: -34px; left: 110px;">
-					<button type="button" class="btn btn-default" style="cursor: default;">显示</button>
-					<div class="btn-group">
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							10
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">20</a></li>
-							<li><a href="#">30</a></li>
-						</ul>
-					</div>
-					<button type="button" class="btn btn-default" style="cursor: default;">条/页</button>
-				</div>
-				<div style="position: relative;top: -88px; left: 285px;">
-					<nav>
-						<ul class="pagination">
-							<li class="disabled"><a href="#">首页</a></li>
-							<li class="disabled"><a href="#">上一页</a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">下一页</a></li>
-							<li class="disabled"><a href="#">末页</a></li>
-						</ul>
-					</nav>
-				</div>
+
+				<div id="activityPage"></div>
+
 			</div>
 			
 		</div>
