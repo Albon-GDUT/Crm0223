@@ -1,9 +1,13 @@
 package com.bjpowernode.crm.workbench.service.impl;
 
 import com.bjpowernode.crm.utils.SqlSessionUtil;
+import com.bjpowernode.crm.vo.PaginationVO;
 import com.bjpowernode.crm.workbench.dao.ActivityDao;
 import com.bjpowernode.crm.workbench.domain.Activity;
 import com.bjpowernode.crm.workbench.service.ActivityService;
+
+import java.util.List;
+import java.util.Map;
 
 public class ActivityServiceImpl implements ActivityService {
 
@@ -25,7 +29,7 @@ public class ActivityServiceImpl implements ActivityService {
         return flag;
     }
 
-    /*public PaginationVO<Activity> pageList(Map<String, Object> map) {
+    public PaginationVO<Activity> pageList(Map<String, Object> map) {
 
         //取得total
         int total = activityDao.getTotalByCondition(map);
@@ -40,7 +44,7 @@ public class ActivityServiceImpl implements ActivityService {
 
         //将vo返回
         return vo;
-    }*/
+    }
 
     /*public boolean delete(String[] ids) {
 

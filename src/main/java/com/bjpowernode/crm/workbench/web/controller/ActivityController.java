@@ -8,6 +8,7 @@ import com.bjpowernode.crm.utils.DateTimeUtil;
 import com.bjpowernode.crm.utils.PrintJson;
 import com.bjpowernode.crm.utils.ServiceFactory;
 import com.bjpowernode.crm.utils.UUIDUtil;
+import com.bjpowernode.crm.vo.PaginationVO;
 import com.bjpowernode.crm.workbench.domain.Activity;
 import com.bjpowernode.crm.workbench.service.ActivityService;
 import com.bjpowernode.crm.workbench.service.impl.ActivityServiceImpl;
@@ -17,7 +18,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ActivityController extends HttpServlet {
 
@@ -35,6 +38,10 @@ public class ActivityController extends HttpServlet {
         }else if("/workbench/activity/save.do".equals(path)){
 
             save(request,response);
+
+        }else if("/workbench/activity/pageList.do".equals(path)){
+
+            pageList(request,response);
 
         }
 
@@ -230,7 +237,7 @@ public class ActivityController extends HttpServlet {
 
     }*/
 
-    /*private void pageList(HttpServletRequest request, HttpServletResponse response) {
+    private void pageList(HttpServletRequest request, HttpServletResponse response) {
 
         System.out.println("进入到查询市场活动信息列表的操作（结合条件查询+分页查询）");
 
@@ -256,8 +263,7 @@ public class ActivityController extends HttpServlet {
 
         ActivityService as = (ActivityService) ServiceFactory.getService(new ActivityServiceImpl());
 
-        *//*
-
+        /*
             前端要： 市场活动信息列表
                     查询的总条数
 
@@ -267,7 +273,6 @@ public class ActivityController extends HttpServlet {
                     map.put("total":total)
                     PrintJSON map --> json
                     {"total":100,"dataList":[{市场活动1},{2},{3}]}
-
 
                     vo
                     PaginationVO<T>
@@ -280,22 +285,15 @@ public class ActivityController extends HttpServlet {
                     PrintJSON vo --> json
                     {"total":100,"dataList":[{市场活动1},{2},{3}]}
 
-
                     将来分页查询，每个模块都有，所以我们选择使用一个通用vo，操作起来比较方便
+         */
 
-
-
-
-         *//*
         PaginationVO<Activity> vo = as.pageList(map);
 
         //vo--> {"total":100,"dataList":[{市场活动1},{2},{3}]}
         PrintJson.printJsonObj(response, vo);
 
-
-
-
-    }*/
+    }
 
     private void save(HttpServletRequest request, HttpServletResponse response) {
 

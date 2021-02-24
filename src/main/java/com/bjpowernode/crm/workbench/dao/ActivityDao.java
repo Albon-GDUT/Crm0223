@@ -9,11 +9,11 @@ public interface ActivityDao {
 
     int save(Activity a);
 
-    /*List<Activity> getActivityListByCondition(Map<String, Object> map);
+    List<Activity> getActivityListByCondition(Map<String, Object> map);
 
     int getTotalByCondition(Map<String, Object> map);
 
-    int delete(String[] ids);
+    /*int delete(String[] ids);
 
     Activity getById(String id);
 
