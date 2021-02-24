@@ -43,6 +43,10 @@ public class ActivityController extends HttpServlet {
 
             pageList(request,response);
 
+        }else if("/workbench/activity/delete.do".equals(path)){
+
+            delete(request,response);
+
         }
 
 
@@ -222,7 +226,7 @@ public class ActivityController extends HttpServlet {
 
     }*/
 
-    /*private void delete(HttpServletRequest request, HttpServletResponse response) {
+    private void delete(HttpServletRequest request, HttpServletResponse response) {
 
         System.out.println("执行市场活动的删除操作");
 
@@ -235,7 +239,7 @@ public class ActivityController extends HttpServlet {
         PrintJson.printJsonFlag(response, flag);
 
 
-    }*/
+    }
 
     private void pageList(HttpServletRequest request, HttpServletResponse response) {
 

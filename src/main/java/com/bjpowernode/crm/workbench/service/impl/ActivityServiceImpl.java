@@ -3,6 +3,7 @@ package com.bjpowernode.crm.workbench.service.impl;
 import com.bjpowernode.crm.utils.SqlSessionUtil;
 import com.bjpowernode.crm.vo.PaginationVO;
 import com.bjpowernode.crm.workbench.dao.ActivityDao;
+import com.bjpowernode.crm.workbench.dao.ActivityRemarkDao;
 import com.bjpowernode.crm.workbench.domain.Activity;
 import com.bjpowernode.crm.workbench.service.ActivityService;
 
@@ -12,7 +13,7 @@ import java.util.Map;
 public class ActivityServiceImpl implements ActivityService {
 
     private ActivityDao activityDao = SqlSessionUtil.getSqlSession().getMapper(ActivityDao.class);
-    /*private ActivityRemarkDao activityRemarkDao = SqlSessionUtil.getSqlSession().getMapper(ActivityRemarkDao.class);*/
+    private ActivityRemarkDao activityRemarkDao = SqlSessionUtil.getSqlSession().getMapper(ActivityRemarkDao.class);
     /*private UserDao userDao = SqlSessionUtil.getSqlSession().getMapper(UserDao.class);*/
 
     public boolean save(Activity a) {
@@ -46,7 +47,7 @@ public class ActivityServiceImpl implements ActivityService {
         return vo;
     }
 
-    /*public boolean delete(String[] ids) {
+    public boolean delete(String[] ids) {
 
         boolean flag = true;
 
@@ -71,7 +72,7 @@ public class ActivityServiceImpl implements ActivityService {
         }
 
         return flag;
-    }*/
+    }
 
     /*public Map<String, Object> getUserListAndActivity(String id) {
 

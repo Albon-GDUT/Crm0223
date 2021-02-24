@@ -13,7 +13,7 @@ public interface ActivityDao {
 
     int getTotalByCondition(Map<String, Object> map);
 
-    /*int delete(String[] ids);
+    int delete(String[] ids);
 
     Activity getById(String id);
 
@@ -25,6 +25,6 @@ public interface ActivityDao {
 
     List<Activity> getActivityListByNameAndNotByClueId(Map<String, String> map);
 
-    List<Activity> getActivityListByName(String aname);*/
+    List<Activity> getActivityListByName(String aname);
 
 }
