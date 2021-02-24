@@ -90,7 +90,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			})
 		})
 
-		//为保存按钮绑定事件，执行添加操作
+		//为保存按钮绑定事件，执行添加操作。
 		$("#saveBtn").click(function () {
 
 			$.ajax({
