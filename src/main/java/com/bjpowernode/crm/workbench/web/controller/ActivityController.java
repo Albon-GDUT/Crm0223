@@ -47,6 +47,14 @@ public class ActivityController extends HttpServlet {
 
             delete(request,response);
 
+        }else if("/workbench/activity/getUserListAndActivity.do".equals(path)){
+
+            getUserListAndActivity(request,response);
+
+        }else if("/workbench/activity/update.do".equals(path)){
+
+            update(request,response);
+
         }
 
 
@@ -162,7 +170,7 @@ public class ActivityController extends HttpServlet {
 
     }*/
 
-    /*private void update(HttpServletRequest request, HttpServletResponse response) {
+    private void update(HttpServletRequest request, HttpServletResponse response) {
 
         System.out.println("执行市场活动修改操作");
 
@@ -195,9 +203,9 @@ public class ActivityController extends HttpServlet {
 
         PrintJson.printJsonFlag(response, flag);
 
-    }*/
+    }
 
-    /*private void getUserListAndActivity(HttpServletRequest request, HttpServletResponse response) {
+    private void getUserListAndActivity(HttpServletRequest request, HttpServletResponse response) {
 
         System.out.println("进入到查询用户信息列表和根据市场活动id查询单条记录的操作");
 
@@ -205,26 +213,27 @@ public class ActivityController extends HttpServlet {
 
         ActivityService as = (ActivityService) ServiceFactory.getService(new ActivityServiceImpl());
 
-        *//*
+        /*
 
             总结：
                 controller调用service的方法，返回值应该是什么
                 你得想一想前端要什么，就要从service层取什么
 
-            前端需要的，管业务层去要
+            前端需要的信息，向业务层去要
             uList
             a
 
             以上两项信息，复用率不高，我们选择使用map打包这两项信息即可
             map
 
-         *//*
+        */
+
         Map<String,Object> map = as.getUserListAndActivity(id);
 
         PrintJson.printJsonObj(response, map);
 
 
-    }*/
+    }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) {
 

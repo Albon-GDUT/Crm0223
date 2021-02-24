@@ -97,7 +97,7 @@
 
     </select>-->
 
-    <!--<update id="update">
+    <update id="update">
 
         update tbl_activity set
 
@@ -112,16 +112,13 @@
 
         where id=#{id}
 
+    </update>
 
-
-    </update>-->
-
-    <!--<select id="getById" resultType="Activity">
+    <select id="getById" resultType="Activity">
 
         select * from tbl_activity where id=#{id}
 
-
-    </select>-->
+    </select>
 
     <delete id="delete">
 

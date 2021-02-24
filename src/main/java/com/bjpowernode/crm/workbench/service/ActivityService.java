@@ -12,13 +12,13 @@ public interface ActivityService {
 
     boolean delete(String[] ids);
 
-    /*Map<String, Object> getUserListAndActivity(String id);
+    Map<String, Object> getUserListAndActivity(String id);
 
     boolean update(Activity a);
 
-    Activity detail(String id);
+    /*Activity detail(String id);*/
 
-    List<ActivityRemark> getRemarkListByAid(String activityId);
+    /*List<ActivityRemark> getRemarkListByAid(String activityId);
 
     boolean deleteRemark(String id);
 
