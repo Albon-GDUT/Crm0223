@@ -23,7 +23,7 @@
 
     </select>-->
 
-    <!--<select id="getActivityListByNameAndNotByClueId" resultType="Activity">
+    <select id="getActivityListByNameAndNotByClueId" resultType="Activity">
 
         select
 
@@ -49,9 +49,9 @@
 
         )
 
-    </select>-->
+    </select>
 
-    <!--<select id="getActivityListByClueId" resultType="Activity">
+    <select id="getActivityListByClueId" resultType="Activity">
 
         select
 
@@ -69,7 +69,7 @@
 
         where car.clueId=#{clueId}
 
-    </select>-->
+    </select>
 
     <select id="detail" resultType="Activity">
 

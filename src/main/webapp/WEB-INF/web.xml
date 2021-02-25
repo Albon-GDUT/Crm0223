@@ -36,9 +36,9 @@
     <url-pattern>*.jsp</url-pattern>
   </filter-mapping>
 
-  <!--<listener>
+  <listener>
     <listener-class>com.bjpowernode.crm.web.listener.SysInitListener</listener-class>
-  </listener>-->
+  </listener>
 
 
   <!-- 用户控制器 -->
@@ -72,7 +72,7 @@
   </servlet-mapping>
 
   <!-- 线索控制器 -->
-  <!--<servlet>
+  <servlet>
     <servlet-name>ClueController</servlet-name>
     <servlet-class>com.bjpowernode.crm.workbench.web.controller.ClueController</servlet-class>
   </servlet>
@@ -87,7 +87,7 @@
     <url-pattern>/workbench/clue/bund.do</url-pattern>
     <url-pattern>/workbench/clue/getActivityListByName.do</url-pattern>
     <url-pattern>/workbench/clue/convert.do</url-pattern>
-  </servlet-mapping>-->
+  </servlet-mapping>
 
   <!-- 交易控制器 -->
   <!--<servlet>
