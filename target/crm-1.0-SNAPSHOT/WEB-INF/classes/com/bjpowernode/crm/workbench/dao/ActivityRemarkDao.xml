@@ -24,7 +24,6 @@
             editFlag,
             activityId
 
-
         )
 
         values(
@@ -36,10 +35,7 @@
             #{editFlag},
             #{activityId}
 
-
         )
-
-
 
     </insert>
 
@@ -86,27 +82,3 @@
 
 	
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

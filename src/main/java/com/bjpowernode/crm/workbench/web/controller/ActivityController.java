@@ -64,12 +64,24 @@ public class ActivityController extends HttpServlet {
 
             getRemarkListByAid(request,response);
 
+        }else if("/workbench/activity/deleteRemark.do".equals(path)){
+
+            deleteRemark(request,response);
+
+        }else if("/workbench/activity/saveRemark.do".equals(path)){
+
+            saveRemark(request,response);
+
+        }else if("/workbench/activity/updateRemark.do".equals(path)){
+
+            updateRemark(request,response);
+
         }
 
 
     }
 
-    /*private void updateRemark(HttpServletRequest request, HttpServletResponse response) {
+    private void updateRemark(HttpServletRequest request, HttpServletResponse response) {
 
         System.out.println("执行修改备注的操作");
 
@@ -97,9 +109,9 @@ public class ActivityController extends HttpServlet {
 
         PrintJson.printJsonObj(response, map);
 
-    }*/
+    }
 
-    /*private void saveRemark(HttpServletRequest request, HttpServletResponse response) {
+    private void saveRemark(HttpServletRequest request, HttpServletResponse response) {
 
         System.out.println("执行添加备注操作");
 
@@ -128,10 +140,9 @@ public class ActivityController extends HttpServlet {
 
         PrintJson.printJsonObj(response, map);
 
+    }
 
-    }*/
-
-    /*private void deleteRemark(HttpServletRequest request, HttpServletResponse response) {
+    private void deleteRemark(HttpServletRequest request, HttpServletResponse response) {
 
         System.out.println("删除备注操作");
 
@@ -143,8 +154,7 @@ public class ActivityController extends HttpServlet {
 
         PrintJson.printJsonFlag(response, flag);
 
-
-    }*/
+    }
 
     private void getRemarkListByAid(HttpServletRequest request, HttpServletResponse response) {
 

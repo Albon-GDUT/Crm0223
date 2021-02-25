@@ -122,7 +122,7 @@ public class ActivityServiceImpl implements ActivityService {
         return arList;
     }
 
-    /*public boolean deleteRemark(String id) {
+    public boolean deleteRemark(String id) {
 
         boolean flag = true;
 
@@ -135,9 +135,9 @@ public class ActivityServiceImpl implements ActivityService {
         }
 
         return flag;
-    }*/
+    }
 
-    /*public boolean saveRemark(ActivityRemark ar) {
+    public boolean saveRemark(ActivityRemark ar) {
 
         boolean flag = true;
 
@@ -150,9 +150,9 @@ public class ActivityServiceImpl implements ActivityService {
         }
 
         return flag;
-    }*/
+    }
 
-    /*public boolean updateRemark(ActivityRemark ar) {
+    public boolean updateRemark(ActivityRemark ar) {
 
         boolean flag = true;
 
@@ -165,7 +165,7 @@ public class ActivityServiceImpl implements ActivityService {
         }
 
         return flag;
-    }*/
+    }
 
     /*public List<Activity> getActivityListByClueId(String clueId) {
 
