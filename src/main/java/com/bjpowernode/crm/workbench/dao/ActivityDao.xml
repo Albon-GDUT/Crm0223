@@ -5,7 +5,7 @@
 
 <mapper namespace="com.bjpowernode.crm.workbench.dao.ActivityDao">
 
-    <!--<select id="getActivityListByName" resultType="Activity">
+    <select id="getActivityListByName" resultType="Activity">
 
         select
 
@@ -21,7 +21,7 @@
 
         where a.name like '%' #{aname} '%'
 
-    </select>-->
+    </select>
 
     <select id="getActivityListByNameAndNotByClueId" resultType="Activity">
 
